@@ -1,0 +1,117 @@
+    
+body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: rgb(27, 112, 136);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: rgb(211, 182, 21);
+            overflow: hidden;   
+        }
+.blink {
+            font-size: 6vw;
+            color: rgb(231, 212, 39);
+            margin: 0;
+            text-align: center;
+            animation: blinking 1s infinite; /* Dura 1 segundo e repete infinitamente */
+        }
+
+.blue {
+    color: rgba(212, 3, 3, 0.87);
+}
+
+h2 {
+            font-size: 4.4vw;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+.clock {
+            font-size: 4vw;
+            color: rgb(249, 249, 249);
+            margin: 20px;
+            display: flex;
+        }
+
+.container {
+            display: flex;
+            gap: 60px;
+            margin: 0px 8px;
+            padding: 8px;
+        }
+.quadro {
+            width: 500px;
+            height: 140px;
+            background-color:rgb(31, 1, 70);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 4px;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+            animation: borderAnimation 2s infinite; /* Aplica a animação */
+        }
+
+.texto {
+            color: #fdf363;
+            font-size: 55px;
+            text-align: center;
+        }
+
+.quadro:nth-child(2) .texto {
+            animation-delay: 0.5s;
+        }
+@keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+}
+@keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+}
+
+ @keyframes blinking {
+    0%, 100% {
+        opacity: 1; /* Totalmente visível */
+    }
+    50% {
+        opacity: 0; /* Invisível */
+    }
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .quadro {
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 5vw;
+    }
+
+    .clock {
+        font-size: 5vw;
+    }
+
+    .quadro {
+        width: 100%;
+    }
+
+    .texto {
+        font-size: 40px;
+    }
+}
