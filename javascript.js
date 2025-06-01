@@ -4,47 +4,42 @@ let daysProva1 = parseInt(localStorage.getItem('daysProva1')) || 141;
 let daysProva2 = parseInt(localStorage.getItem('daysProva2')) || 156;
 let totalSeconds = 3600; // 1 hora em segundos
 
+
 function updateCountdown() {
 
 // Atualiza contagem da Prova 1--------------------------------------------------------------------------------------------
 
-if (daysProva1 > 0) {daysProva1--;
-
-localStorage.setItem('daysProva1', daysProva1); 
-// Atualiza o elemento HTML com a contagem regressiva
-document.getElementById('prova1').innerHTML = `<strong><span class="blue">SAEB:</span></strong> Faltam <strong>${daysProva1}</strong> dias`;
-
-} else {
+    if (daysProva1 > 0) {
+        daysProva1--;
+        localStorage.setItem('daysProva1', daysProva1);
+        document.getElementById('prova1').innerHTML = `<strong><span class="blue">SAEB:</span></strong> Faltam <strong>${daysProva1}</strong> dias`;
+    } else {
         document.getElementById('prova1').innerHTML = `<strong><span class="blue">SAEB:</span></strong> A prova é amanhã!`;
-}
+    }
 
-// Atualiza contagem da Prova 2---------------------------------------------------------------------------------------------
-if (daysProva2 > 0) {daysProva2--;
-localStorage.setItem('daysProva2', daysProva2);
-// Atualiza o elemento HTML com a contagem regressiva
-document.getElementById('prova2').innerHTML = `<strong><span class="blue">SARESP:</span></strong> Faltam <strong>${daysProva2}</strong> dias`;
-
-} else {
+    // Atualiza contagem da Prova 2
+    if (daysProva2 > 0) {
+        daysProva2--;
+        localStorage.setItem('daysProva2', daysProva2);
+        document.getElementById('prova2').innerHTML = `<strong><span class="blue">SARESP:</span></strong> Faltam <strong>${daysProva2}</strong> dias`;
+    } else {
         document.getElementById('prova2').innerHTML = `<strong><span class="blue">SARESP:</span></strong> A prova é amanhã!`;
     }
 }
-//----------------------------------------------------------------------------------------------------------------------------
-// Verifica se 24 horas se passaram e atualiza a contagem
 
+// Verifica se 24 horas se passaram e atualiza a contagem
 function checkAndUpdate() {
-    const lastUpdate = parseInt(localStorage.getItem('lastUpdate')) || Date.now();
+    const lastUpdate = parseInt(localStorage.getItem('lastUpdate')) || 0;
     const now = Date.now();
 
-// Verifica se 24 horas se passaram
-
-if (now - lastUpdate >= 86400000) { // 24 horas em milissegundos
+    // Se for a primeira execução (lastUpdate = 0), atualize imediatamente
+    if (lastUpdate === 0 || now - lastUpdate >= 86400000) {
         updateCountdown();
         localStorage.setItem('lastUpdate', now); // Atualiza o timestamp
     }
 }
 
 // Chama a função imediatamente e configura o intervalo
-
 document.addEventListener('DOMContentLoaded', () => {
     checkAndUpdate(); // Verifica e atualiza no carregamento
     setInterval(checkAndUpdate, 60000); // Verifica a cada minuto 
