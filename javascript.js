@@ -2,7 +2,7 @@
 
 let daysProva1 = parseInt(localStorage.getItem('daysProva1')) || 141;
 let daysProva2 = parseInt(localStorage.getItem('daysProva2')) || 156;
-let totalSeconds = 3600; // 1 hora em segundos
+
 
 
 function updateCountdown() {
