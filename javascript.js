@@ -48,34 +48,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Atualiza o relógio--------------------------------------------------------------------------------------------------------
 
+
+
+let totalSeconds = 141 * 24 * 60 * 60; // 141 dias em segundos
+
+
+// Atualiza o relógio
 function updateClock() {
+    console.log("Atualizando o relógio...");
 
-console.log("Atualizando o relógio..."); // Mova o log para dentro da função
-
-if (totalSeconds <= 0) {
+    if (totalSeconds <= 0) {
         document.getElementById('clock').textContent = "Tempo esgotado!";
         clearInterval(interval); // Para o cronômetro
-    return;
-}
-    
-const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
-const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
-const seconds = String(totalSeconds % 60).padStart(2, '0');
-    
-document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
-document.getElementById('clock').setAttribute('title', `Tempo restante: ${hours}:${minutes}:${seconds}`);
-document.getElementById('clock').setAttribute('aria-label', `Tempo restante: ${hours}:${minutes}:${seconds}`);
-
-totalSeconds--; // Diminui o tempo
-    if (totalSeconds < 0) {
-        totalSeconds = 0; // Garante que não fique negativo
+        return;
     }
+
+    const days = Math.floor(totalSeconds / (24 * 60 * 60));
+    const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+       document.getElementById('clock').textContent = ` ${hours}: ${minutes}: ${seconds}`;
+  
+      totalSeconds--; // Diminui o tempo
+     
 }
 
-// Inicia o relógio---------------------------------------------------------------------------------------------------------
-
+// Inicia o relógio
 const interval = setInterval(updateClock, 1000); // Chama a função a cada segundo
 
-// Remova a segunda chamada para updateClock
-
-updateClock(); // Chama imediatamente para mostrar o tempo inicial
+// Chama imediatamente para mostrar o tempo inicial
+updateClock();
