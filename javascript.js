@@ -1,7 +1,7 @@
 // Inicializa os valores a partir do localStorage ou usa os padrões---------------------------------------------------------
 
-let daysProva1 = parseInt(localStorage.getItem('daysProva1')) || 87;
-let daysProva2 = parseInt(localStorage.getItem('daysProva2')) || 97;
+let daysProva1 = parseInt(localStorage.getItem('daysProva1')) || 141;
+let daysProva2 = parseInt(localStorage.getItem('daysProva2')) || 156;
 let totalSeconds = 3600; // 1 hora em segundos
 
 function updateCountdown() {
@@ -12,7 +12,7 @@ if (daysProva1 > 0) {daysProva1--;
 
 localStorage.setItem('daysProva1', daysProva1); 
 // Atualiza o elemento HTML com a contagem regressiva
-document.getElementById('prova1').innerHTML = `<strong><span class="blue">SAEB:</span></strong> Faltam <strong>${daysProva1}</strong> dias letivos`;
+document.getElementById('prova1').innerHTML = `<strong><span class="blue">SAEB:</span></strong> Faltam <strong>${daysProva1}</strong> dias`;
 
 } else {
         document.getElementById('prova1').innerHTML = `<strong><span class="blue">SAEB:</span></strong> A prova é amanhã!`;
@@ -22,7 +22,7 @@ document.getElementById('prova1').innerHTML = `<strong><span class="blue">SAEB:<
 if (daysProva2 > 0) {daysProva2--;
 localStorage.setItem('daysProva2', daysProva2);
 // Atualiza o elemento HTML com a contagem regressiva
-document.getElementById('prova2').innerHTML = `<strong><span class="blue">SARESP:</span></strong> Faltam <strong>${daysProva2}</strong> dias letivos`;
+document.getElementById('prova2').innerHTML = `<strong><span class="blue">SARESP:</span></strong> Faltam <strong>${daysProva2}</strong> dias`;
 
 } else {
         document.getElementById('prova2').innerHTML = `<strong><span class="blue">SARESP:</span></strong> A prova é amanhã!`;
