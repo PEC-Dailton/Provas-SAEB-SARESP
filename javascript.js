@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-let totalSeconds = 141 * 24 * 60 * 60; // 141 dias em segundos
-
+//let totalSeconds = 141 * 24 * 60 * 60; // 141 dias em segundos
+let totalSeconds = 24 * 60 * 60; // 141 dias em segundos
 
 // Atualiza o relógio
 function updateClock() {
@@ -63,12 +63,13 @@ function updateClock() {
         return;
     }
 
-    const days = Math.floor(totalSeconds / (24 * 60 * 60));
+    //const days = Math.floor(totalSeconds / (24 * 60 * 60));
     const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-       document.getElementById('clock').textContent = ` ${hours}: ${minutes}: ${seconds}`;
+    document.getElementById('clock').textContent = ` ${hours}: ${minutes}: ${seconds}`;
+  //  document.getElementById('clock').textContent = `${days}(dias) ${hours}: ${minutes}: ${seconds}`;
   
       totalSeconds--; // Diminui o tempo
      
