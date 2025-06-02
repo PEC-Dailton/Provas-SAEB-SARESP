@@ -1,7 +1,7 @@
 // Inicializa os valores a partir do localStorage ou usa os padrões---------------------------------------------------------
 
-let daysProva1 = parseInt(localStorage.getItem('daysProva1')) || 141;
-let daysProva2 = parseInt(localStorage.getItem('daysProva2')) || 156;
+let daysProva1 = parseInt(localStorage.getItem('daysProva1')) || 140;
+let daysProva2 = parseInt(localStorage.getItem('daysProva2')) || 155;
 
 
 
